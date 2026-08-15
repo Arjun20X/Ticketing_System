@@ -9,6 +9,10 @@ const envSchema = z.object({
         .positive()
         .default(4000),
 
+    LOG_LEVEL: z
+    .enum(["fatal", "error", "warn", "info", "debug", "trace"])
+    .default("info"),
+
     DATABASE_URL: z.string().min(1),
 
     REDIS_URL: z.string().min(1),
