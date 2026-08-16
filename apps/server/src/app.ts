@@ -3,6 +3,8 @@ import { pinoHttp } from "pino-http";
 
 import { logger } from "./shared/logger/logger.js";
 
+import { errorHandler } from "./shared/middleware/errorHandler.js";
+
 const app = express();
 
 app.use(
@@ -18,5 +20,7 @@ app.get("/health", (_req, res) => {
         status: "ok"
     });
 });
+
+app.use(errorHandler);
 
 export default app;
